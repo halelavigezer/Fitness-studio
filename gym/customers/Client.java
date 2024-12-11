@@ -12,4 +12,14 @@ public class Client
     {
         return this.person;
     }
-}
+
+    public boolean Up65(String date) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate birthDate = LocalDate.parse(date, formatter);
+            LocalDate currentDate = LocalDate.now();
+            Period age = Period.between(birthDate, currentDate);
+            return age.getYears() >= 65;
+        }
+
+    }
+

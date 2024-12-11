@@ -20,7 +20,7 @@ public class Secretary
     protected int many;
     protected List<Client> clients;
     protected List<Instructor> instructors;
-   public Secretary(Person person, int many) {
+   protected Secretary(Person person, int many) {
        this.person=person;
        this.many=many;
    }
@@ -54,7 +54,7 @@ public class Secretary
         return person;
     }
 
-    public void setPerson(Person person) {
+    protected void setPerson(Person person) {
         this.person = person;
     }
 
