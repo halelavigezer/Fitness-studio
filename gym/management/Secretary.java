@@ -25,9 +25,7 @@ public class Secretary
        this.many=many;
    }
 
-    public Client registerClient(Person p)
-    {
-
+    public Client registerClient(Person p) {
      Client client=new Client(p);
      if(clients.contains(client))
      {

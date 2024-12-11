@@ -1,15 +1,28 @@
 package gym.customers;
 
-public class Client
-{
-    protected Person person;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
-    public Client(Person person)
-    {
+public class Client {
+    protected Person person;
+    public ArrayList<ForumType> types =new ArrayList<>();
+
+    public Client(Person person) {
         this.person=person;
+        this.types.add(ForumType.All);
+        if(person.getGender()==Gender.Female) {
+            this.types.add(ForumType.Female);
+        }
+        else
+            this.types.add(ForumType.Male);
+        if(Up65(person.DateOfBirth)) {
+            this.types.add(ForumType.Seniors);
+        }
     }
-    public Person getPerson()
-    {
+
+    public Person getPerson() {
         return this.person;
     }
 
