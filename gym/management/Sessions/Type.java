@@ -1,6 +1,5 @@
 package gym.management.Sessions;
 
-public interface Type
-{
-    protected
+public interface Type {
+    public  int GetNumber();
 }

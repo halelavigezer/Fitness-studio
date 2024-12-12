@@ -1,15 +1,18 @@
 package gym.management.Sessions;
 
-public class Pilates
-{
+public class Pilates implements Type{
     public int pepole;
     public int cash;
     public  String name="Pilates";
 
-    public Pilates(int pepole, int cash)
+    public Pilates()
     {
-        this.pepole=pepole;
-        this.cash=cash;
+        this.pepole=30;
+        this.cash=60;
     }
 
+    @Override
+    public int GetNumber() {
+        return 30;
+    }
 }

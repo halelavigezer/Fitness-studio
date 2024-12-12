@@ -1,7 +1,5 @@
 package gym.management;
-import gym.Exception.ClientNotRegisteredException;
-import gym.Exception.DuplicateClientException;
-import gym.Exception.InvalidAgeException;
+import gym.Exception.*;
 import gym.customers.Client;
 import gym.customers.ForumType;
 import gym.customers.Instructor;
@@ -22,6 +20,7 @@ public class Secretary
     protected int many;
     protected List<Client> clients;
     protected List<Instructor> instructors;
+    protected List<Session> sessions=new ArrayList<>();
    protected Secretary(Person person, int many) {
        this.person=person;
        this.many=many;

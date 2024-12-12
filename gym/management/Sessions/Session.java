@@ -1,7 +1,7 @@
 package gym.management.Sessions;
 
 import gym.Exception.InstructorNotQualifiedException;
-import gym.Exception.InvalidAgeException;
+import gym.customers.Client;
 import gym.customers.ForumType;
 import gym.customers.Instructor;
 
@@ -16,20 +16,20 @@ public class Session {
     public Type newType;
 
     public Session(SessionType sessionType, String date, ForumType forumType, Instructor instructor) {
-        if (!instructor.getTutorials().contains(forumType)) {
-            throw new InstructorNotQualifiedException("InstructorNotQualifiedException") ;
-        }
-        else
-            this.instructor=instructor;
+        this.instructor=instructor;
         this.date=date;
+        this.clients = new ArrayList<>();
+        this.forumType=forumType;
 
-        switch (vehicleType) {
-            case CAR:
-                return new Car();
-            case BIKE:
-                return new Bike();
-            case TRUCK:
-                return new Truck();
+        switch (sessionType) {
+            case ThaiBoxing:
+                 newType= new ThaiBoxing();
+            case Pilates:
+                  newType= new Pilates();
+            case Ninja:
+                 newType=new Ninja();
+            case MachinePilates:
+                newType=new MachinePilates();
             default:
                 throw new IllegalArgumentException("Invalid vehicle type");
         }

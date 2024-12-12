@@ -1,12 +1,21 @@
 package gym.management.Sessions;
 
-public class Ninja {
+public class Ninja implements Type {
     public int pepole;
     public int cash;
     public  String name ="Ninja";
 
-    public Ninja(int pepole, int cash) {
-        this.pepole=pepole;
-        this.cash=cash;
+    public Ninja() {
+        this.pepole=5;
+        this.cash=150;
+    }
+
+    public int getCash() {
+        return cash;
+    }
+
+    @Override
+    public int GetNumber() {
+        return 5;
     }
 }

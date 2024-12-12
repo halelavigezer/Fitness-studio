@@ -21,7 +21,6 @@ public class Client {
             this.types.add(ForumType.Seniors);
         }
     }
-
     public Person getPerson() {
         return this.person;
     }
@@ -38,4 +37,5 @@ public class Client {
         }
 
     }
+
 
