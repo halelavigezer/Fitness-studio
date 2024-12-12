@@ -25,6 +25,9 @@ public class Client {
     public Person getPerson() {
         return this.person;
     }
+    public ArrayList<ForumType> getTypes(){
+        return this.types;
+    }
 
     public boolean Up65(String date) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");

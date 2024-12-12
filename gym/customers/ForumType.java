@@ -1,6 +1,5 @@
 package gym.customers;
 
-public enum ForumType
-{
+public enum ForumType {
     All,Female,Seniors,Male;
 }

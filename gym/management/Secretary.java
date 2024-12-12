@@ -3,8 +3,10 @@ import gym.Exception.ClientNotRegisteredException;
 import gym.Exception.DuplicateClientException;
 import gym.Exception.InvalidAgeException;
 import gym.customers.Client;
+import gym.customers.ForumType;
 import gym.customers.Instructor;
 import gym.customers.Person;
+import gym.management.Sessions.Session;
 import gym.management.Sessions.SessionType;
 
 import java.time.LocalDate;
@@ -64,33 +66,49 @@ public class Secretary
         }
         clients.remove(c);
     }
-    public boolean up18(String dateString)
-    {
-        // הגדרת פורמט התאריך (לדוגמה: "yyyy-MM-dd")
+    public boolean up18(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        // המרת המחרוזת לתאריך
         LocalDate birthDate = LocalDate.parse(dateString, formatter);
-
-        // התאריך הנוכחי
         LocalDate currentDate = LocalDate.now();
-
-        // חישוב ההפרש בין תאריכי הלידה להווה
         Period age = Period.between(birthDate, currentDate);
-
-        // בדיקה אם הגיל הוא לפחות 18
         return age.getYears() >= 18;
     }
 
-    public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes)
-    {
-        if(!up18(p.getDateOfBirth()))
-        {
+    public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes) {
+        if(!up18(p.getDateOfBirth())) {
             throw new ClientNotRegisteredException("ClientNotRegisteredException");
         }
         Instructor instructor=new Instructor(p,i,sessionTypes);
         instructors.add(instructor);
         return instructor;
+    }
+    public Session addSession(SessionType s, String data,ForumType m, Instructor i){
+        if (!i.getTutorials().contains(m)) {
+            throw new InstructorNotQualifiedException("InstructorNotQualifiedException") ;
+        }
+        //לבדוק אם צריך לעשות בדיקה אם המדריך פנוי באותם שעות
+        Session session=new Session(s,data,m,i);
+        if (sessions.contains(session)) {
+            throw new DuplicateClientException("DuplicateClientException");//צריך לשנות במקום שיש כבר את הלוקח הזה לזה שיש כבר את השיעור הזה
+        }
+        sessions.add(session);
+       return session;
+    }
+
+    public void registerClientToLesson(Client c, Session s)
+    {
+        if (!c.getTypes().contains(s.forumType)) {
+            throw new ClientNotRegisteredException("ClientNotRegisteredException") ;
+        }
+        if (s.clients.contains(c))
+        {
+            throw new DuplicateClientException("DuplicateClientException");
+        }
+        if(s.getClients().size()>s.gettype().GetNumber())
+        {
+            throw new FullOccupanciException("FullOccupanciException");
+        }
+        s.setClients(c);
     }
 }
 

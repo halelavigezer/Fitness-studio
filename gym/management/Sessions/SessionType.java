@@ -6,3 +6,4 @@ public enum SessionType {
     Pilates,
     Ninja;
 }
+
