@@ -65,6 +65,9 @@ public class Secretary
         }
         clients.remove(c);
     }
+
+
+    //פעולה שמחזירה אמת אם הבן אדם מעל גיל 18
     public boolean up18(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate birthDate = LocalDate.parse(dateString, formatter);
@@ -90,6 +93,7 @@ public class Secretary
         if (sessions.contains(session)) {
             throw new DuplicateClientException("DuplicateClientException");//צריך לשנות במקום שיש כבר את הלוקח הזה לזה שיש כבר את השיעור הזה
         }
+        i.setHours();
         sessions.add(session);
        return session;
     }
@@ -107,7 +111,46 @@ public class Secretary
         {
             throw new FullOccupanciException("FullOccupanciException");
         }
+        if (c.getPerson().getMany()<s.gettype().GetMany())
+        {
+            throw new notEnoughMoneyException("notEnoughMoneyException");
+        }
+        c.getPerson().setMany(c.getPerson().getMany()-s.gettype().GetMany());
         s.setClients(c);
+    }
+
+    public void notify(Session p, String s) {
+        for (Client client: p.getClients()) {
+                client.update(s);
+        }
+    }
+    public void notify (String data,String s){
+        for (Session session:sessions){
+            String n= session.date;
+            String sudn = n.substring(0,11);
+            if (sudn == data) {
+                for (Client c :session.getClients()){
+                    c.update(s);
+                }
+            }
+        }
+    }
+
+    public void notify(String m) {
+        for (Client client:clients) {
+            client.update(m);
+        }
+    }
+
+    public void paySalaries() {
+        for (int i=0; i<this.instructors.size();i++) {
+            this.instructors.get(i).getPerson().setMany(this.instructors.get(i).getPerson().getMany()+this.instructors.get(i).getHours()*this.instructors.get(i).getSalary());
+        }
+        this.person.setMany(this.person.getMany()+this.many);
+    }
+
+    public void printActions()
+    {
     }
 }
 

@@ -18,4 +18,9 @@ public class Ninja implements Type {
     public int GetNumber() {
         return 5;
     }
+
+    @Override
+    public int GetMany() {
+        return 150;
+    }
 }

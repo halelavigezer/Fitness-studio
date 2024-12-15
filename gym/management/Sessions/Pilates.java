@@ -15,4 +15,9 @@ public class Pilates implements Type{
     public int GetNumber() {
         return 30;
     }
+
+    @Override
+    public int GetMany() {
+        return 60;
+    }
 }

@@ -15,4 +15,9 @@ public class MachinePilates implements Type {
     public int GetNumber() {
         return 10;
     }
+
+    @Override
+    public int GetMany() {
+        return 80;
+    }
 }

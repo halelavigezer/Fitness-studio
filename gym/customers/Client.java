@@ -5,9 +5,10 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Client {
+public class Client implements notifyObserver {
     protected Person person;
     public ArrayList<ForumType> types =new ArrayList<>();
+    public ArrayList<String> notify = new ArrayList<>();
 
     public Client(Person person) {
         this.person=person;
@@ -36,6 +37,19 @@ public class Client {
             return age.getYears() >= 65;
         }
 
+    public String getName()
+    {
+        return this.person.getName();
     }
+
+    public ArrayList<String> getNotifications() {
+        return this.notify;
+    }
+
+    @Override
+    public void update(String s) {
+        this.notify.add(s);
+    }
+}
 
 
