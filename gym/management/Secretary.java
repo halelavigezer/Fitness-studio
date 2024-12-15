@@ -20,7 +20,8 @@ public class Secretary
     protected int many;
     protected List<Client> clients;
     protected List<Instructor> instructors;
-    protected List<Session> sessions=new ArrayList<>();
+    protected List<Session> sessions =new ArrayList<>();
+    // להוסיף ליסט של הכל ולהדפיס אותו הפעןלנ נאחורנה
    protected Secretary(Person person, int many) {
        this.person=person;
        this.many=many;
@@ -57,10 +58,8 @@ public class Secretary
         this.person = person;
     }
 
-    public void unregisterClient(Client c)
-    {
-        if(!clients.contains(c))
-        {
+    public void unregisterClient(Client c){
+        if(!clients.contains(c)) {
             throw new ClientNotRegisteredException("ClientNotRegisteredException");
         }
         clients.remove(c);

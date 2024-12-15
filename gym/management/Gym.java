@@ -29,4 +29,5 @@ public class Gym {
     public Secretary getSecretary() {
         return this.secretary;
     }
+
 }

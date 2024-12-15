@@ -14,4 +14,10 @@ public class ThaiBoxing implements  Type{
     public int GetNumber() {
         return 20 ;
     }
+
+    @Override
+    public int GetMany() {
+        return 100;
+    }
+
 }
