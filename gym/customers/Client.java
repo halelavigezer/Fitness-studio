@@ -5,7 +5,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Client implements notifyObserver {
+public class Client implements Observer {
     protected Person person;
     public ArrayList<ForumType> types =new ArrayList<>();
     public ArrayList<String> notify = new ArrayList<>();

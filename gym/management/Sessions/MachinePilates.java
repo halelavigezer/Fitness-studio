@@ -1,6 +1,6 @@
 package gym.management.Sessions;
 
-public class MachinePilates implements Type {
+public class MachinePilates extends Session {
         public int pepole;
         public int cash;
         public  String name ="MachinePilates";

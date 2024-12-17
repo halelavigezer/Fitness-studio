@@ -33,6 +33,13 @@ public class Session {
     public Type gettype() {
         return this.newType;
     }
+    public  int GetNumber()
+    {
+        return 0;
+    }
+    public int GetMany(){
+        return 0;
+    }
 }
 
 
