@@ -1,15 +1,23 @@
 package gym.management.Sessions;
 
-public class Ninja implements Type {
-    public int pepole;
-    public int cash;
-    public  String name ="Ninja";
+import gym.customers.ForumType;
+import gym.customers.Instructor;
 
-    public Ninja() {
+public class Ninja extends Session {
+    private int pepole;
+    private int cash;
+    private   String name ="Ninja";
+
+    public Ninja(String date, ForumType forumType, Instructor instructor) {
+        super(date, forumType, instructor);
         this.pepole=5;
         this.cash=150;
     }
 
+    @Override
+    public SessionType gettype() {
+        return null;
+    }
     public int getCash() {
         return cash;
     }
