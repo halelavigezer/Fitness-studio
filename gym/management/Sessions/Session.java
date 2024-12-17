@@ -6,7 +6,7 @@ import gym.customers.ForumType;
 import gym.customers.Instructor;
 
 import java.util.ArrayList;
-
+// this is class factory
 public class Session {
     public SessionType sessionType;
     public String date;
@@ -20,20 +20,7 @@ public class Session {
         this.date=date;
         this.clients = new ArrayList<>();
         this.forumType=forumType;
-
-        switch (sessionType) {
-            case ThaiBoxing:
-                 newType= new ThaiBoxing();
-            case Pilates:
-                  newType= new Pilates();
-            case Ninja:
-                 newType=new Ninja();
-            case MachinePilates:
-                newType=new MachinePilates();
-            default:
-                throw new IllegalArgumentException("Invalid vehicle type");
-        }
-
+        this.newType=TypeFactory.creatsession(sessionType);
     }
     public void setClients (Client c){
         if (!clients.contains(c)){

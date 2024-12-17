@@ -1,5 +1,5 @@
 package gym.customers;
 
-public interface notifyObserver {
-    public void update(String notify);
+ interface notifyObserver {
+     void update(String notify);
 }

@@ -1,14 +1,12 @@
 package gym.management;
 
 import gym.customers.Person;
-
+//this class is singelton
 public class Gym {
     private static Gym gym;
     public String mane;
     public Secretary secretary;
-    private Gym(){
-
-    }
+    private Gym(){}
     public static Gym getInstance(){
         if(gym==null){
             gym = new Gym();
