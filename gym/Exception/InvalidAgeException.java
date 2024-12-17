@@ -8,6 +8,6 @@ public class InvalidAgeException extends RuntimeException
     }
     public String getMessage()
     {
-        return "InvalidAgeException";
+        return "Invalid Age Exception";
     }
 }

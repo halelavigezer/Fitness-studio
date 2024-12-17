@@ -6,6 +6,7 @@ import gym.customers.Instructor;
 import gym.customers.Person;
 import gym.management.Sessions.Session;
 import gym.management.Sessions.SessionType;
+import gym.management.Sessions.TypeFactory;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -21,7 +22,7 @@ public class Secretary
     protected List<Client> clients;
     protected List<Instructor> instructors;
     protected List<Session> sessions =new ArrayList<>();
-    // להוסיף ליסט של הכל ולהדפיס אותו הפעןלנ נאחורנה
+    private List<String>message=new ArrayList<>();
    protected Secretary(Person person, int many) {
        this.person=person;
        this.many=many;
@@ -58,7 +59,7 @@ public class Secretary
         this.person = person;
     }
 
-    public void unregisterClient(Client c){
+    public void unregisterClient(Client c)throws ClientNotRegisteredException{
         if(!clients.contains(c)) {
             throw new ClientNotRegisteredException("ClientNotRegisteredException");
         }
@@ -75,7 +76,7 @@ public class Secretary
         return age.getYears() >= 18;
     }
 
-    public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes) {
+    public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes) throws ClientNotRegisteredException{
         if(!up18(p.getDateOfBirth())) {
             throw new ClientNotRegisteredException("ClientNotRegisteredException");
         }
@@ -83,12 +84,12 @@ public class Secretary
         instructors.add(instructor);
         return instructor;
     }
-    public Session addSession(SessionType s, String data,ForumType m, Instructor i){
+    public Session addSession(SessionType s, String data,ForumType m, Instructor i)throws DuplicateClientException{
         if (!i.getTutorials().contains(m)) {
             throw new InstructorNotQualifiedException("InstructorNotQualifiedException") ;
         }
         //לבדוק אם צריך לעשות בדיקה אם המדריך פנוי באותם שעות
-        Session session=new Session(s,data,m,i);
+        Session session= TypeFactory.creatsession(s,data,m,i);
         if (sessions.contains(session)) {
             throw new DuplicateClientException("DuplicateClientException");//צריך לשנות במקום שיש כבר את הלוקח הזה לזה שיש כבר את השיעור הזה
         }
@@ -97,7 +98,7 @@ public class Secretary
        return session;
     }
 
-    public void registerClientToLesson(Client c, Session s)
+    public void registerClientToLesson(Client c, Session s)throws ClientNotRegisteredException,DuplicateClientException
     {
         if (!c.getTypes().contains(s.forumType)) {
             throw new ClientNotRegisteredException("ClientNotRegisteredException") ;
@@ -106,15 +107,15 @@ public class Secretary
         {
             throw new DuplicateClientException("DuplicateClientException");
         }
-        if(s.getClients().size()>s.gettype().GetNumber())
+        if(s.getClients().size()>s.GetNumber())
         {
             throw new FullOccupanciException("FullOccupanciException");
         }
-        if (c.getPerson().getMany()<s.gettype().GetMany())
+        if (c.getPerson().getMany()<s.GetMany())
         {
             throw new notEnoughMoneyException("notEnoughMoneyException");
         }
-        c.getPerson().setMany(c.getPerson().getMany()-s.gettype().GetMany());
+        c.getPerson().setMany(c.getPerson().getMany()-s.GetMany());
         s.setClients(c);
     }
 
@@ -122,6 +123,7 @@ public class Secretary
         for (Client client: p.getClients()) {
                 client.update(s);
         }
+        message.add(s);
     }
     public void notify (String data,String s){
         for (Session session:sessions){
@@ -133,12 +135,14 @@ public class Secretary
                 }
             }
         }
+        message.add(s);
     }
 
     public void notify(String m) {
         for (Client client:clients) {
             client.update(m);
         }
+        message.add(m);
     }
 
     public void paySalaries() {
@@ -150,6 +154,10 @@ public class Secretary
 
     public void printActions()
     {
+        for(String string:message)
+        {
+            System.out.println(string);
+        }
     }
 }
 

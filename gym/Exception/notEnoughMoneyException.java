@@ -6,6 +6,6 @@ public class notEnoughMoneyException extends RuntimeException{
     }
     public String getMessage()
     {
-        return "notEnoughMoneyException";
+        return "not Enough Money Exception";
     }
 }

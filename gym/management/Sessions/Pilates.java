@@ -1,14 +1,23 @@
 package gym.management.Sessions;
 
-public class Pilates implements Type{
-    public int pepole;
-    public int cash;
-    public  String name="Pilates";
+import gym.customers.ForumType;
+import gym.customers.Instructor;
 
-    public Pilates()
-    {
+public class Pilates extends Session{
+    private int pepole;
+    private int cash;
+    private  String name="Pilates";
+
+    public Pilates(String date, ForumType forumType, Instructor instructor) {
+        super(date, forumType, instructor);
         this.pepole=30;
         this.cash=60;
+    }
+
+
+    @Override
+    public SessionType gettype() {
+        return SessionType.Pilates;
     }
 
     @Override

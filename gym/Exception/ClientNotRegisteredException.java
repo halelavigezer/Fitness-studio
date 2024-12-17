@@ -6,7 +6,7 @@ public class ClientNotRegisteredException extends RuntimeException {
         super(message);
     }
     public String getMessage(){
-        String s = "ClientNotRegisteredException";
+        String s = "Client Not Registered Exception";
         return s;
     }
 }

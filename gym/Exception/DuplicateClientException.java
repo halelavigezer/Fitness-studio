@@ -5,7 +5,7 @@ public class DuplicateClientException extends RuntimeException{
         super(message);
     }
     public String getMessage(){
-        String s = "DuplicateClientException";
+        String s = "Duplicate Client Exception";
         return s;
     }
 }
