@@ -6,7 +6,9 @@ public class Gym {
     private static Gym gym;
     public String mane;
     public Secretary secretary;
+
     private Gym(){}
+
     public static Gym getInstance(){
         if(gym==null){
             gym = new Gym();
@@ -27,5 +29,4 @@ public class Gym {
     public Secretary getSecretary() {
         return this.secretary;
     }
-
 }

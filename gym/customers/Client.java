@@ -7,26 +7,26 @@ import java.util.ArrayList;
 
 public class Client implements Observer {
     protected Person person;
-    public ArrayList<ForumType> types =new ArrayList<>();
+    public ArrayList<ForumType> forumTypes =new ArrayList<>();
     public ArrayList<String> notify = new ArrayList<>();
 
     public Client(Person person) {
         this.person=person;
-        this.types.add(ForumType.All);
+        this.forumTypes.add(ForumType.All);
         if(person.getGender()==Gender.Female) {
-            this.types.add(ForumType.Female);
+            this.forumTypes.add(ForumType.Female);
         }
-        else
-            this.types.add(ForumType.Male);
+        else{
+            this.forumTypes.add(ForumType.Male);}
         if(Up65(person.DateOfBirth)) {
-            this.types.add(ForumType.Seniors);
+            this.forumTypes.add(ForumType.Seniors);
         }
     }
     public Person getPerson() {
         return this.person;
     }
     public ArrayList<ForumType> getTypes(){
-        return this.types;
+        return this.forumTypes;
     }
 
     public boolean Up65(String date) {

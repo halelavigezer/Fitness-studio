@@ -22,6 +22,7 @@ public class Secretary
     protected List<Instructor> instructors;
     protected List<Session> sessions =new ArrayList<>();
     private List<String>message=new ArrayList<>();
+
    protected Secretary(Person person, int many) {
        this.person=person;
        this.many=many;
@@ -29,13 +30,10 @@ public class Secretary
 
     public Client registerClient(Person p) {
      Client client=new Client(p);
-     if(clients.contains(client))
-     {
-        throw new InvalidAgeException("Invalid Age Exception");
+     if(clients.contains(client)) {
+        throw new DuplicateClientException("Duplicate Client Exception");
      }
-
-     if (!up18(p.getDateOfBirth()))
-     {
+     if (!up18(p.getDateOfBirth())) {
          throw new InvalidAgeException("Invalid Age Exception");
      }
      clients.add(client);
@@ -66,7 +64,8 @@ public class Secretary
     }
 
 
-    //פעולה שמחזירה אמת אם הבן אדם מעל גיל 18
+
+      //פעולה שמחזירה אמת אם הבן אדם מעל גיל 18
     public boolean up18(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate birthDate = LocalDate.parse(dateString, formatter);
@@ -102,8 +101,7 @@ public class Secretary
         if (!c.getTypes().contains(s.forumType)) {
             throw new ClientNotRegisteredException("Client Not Registered Exception") ;
         }
-        if (s.clients.contains(c))
-        {
+        if (s.clients.contains(c)) {
             throw new DuplicateClientException("Duplicate Client Exception");
         }
         if(s.getClients().size()>s.GetNumber())
@@ -151,8 +149,7 @@ public class Secretary
         this.person.setMany(this.person.getMany()+this.many);
     }
 
-    public void printActions()
-    {
+    public void printActions() {
         for(String string:message)
         {
             System.out.println(string);

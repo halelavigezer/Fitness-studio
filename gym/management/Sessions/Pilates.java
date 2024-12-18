@@ -27,6 +27,6 @@ public class Pilates extends Session{
 
     @Override
     public int GetMany() {
-        return 60;
+        return this.cash;
     }
 }

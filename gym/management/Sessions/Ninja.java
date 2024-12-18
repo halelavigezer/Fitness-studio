@@ -28,6 +28,6 @@ public class Ninja extends Session {
 
     @Override
     public int GetMany() {
-        return 150;
+        return this.cash;
     }
 }

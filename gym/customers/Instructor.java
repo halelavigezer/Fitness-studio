@@ -9,6 +9,7 @@ protected Person person;
 protected  double salary;
 protected ArrayList<SessionType> tutorials;
 protected double hours;
+
 public Instructor(Person p1,double salary,ArrayList<SessionType> t) {
     this.person = p1;
     this.salary = salary;
@@ -20,7 +21,7 @@ public Instructor(Person p1,double salary,ArrayList<SessionType> t) {
         return this.tutorials;
     }
 
-    public void setTutorials(ArrayList tutorials) {
+    public void setTutorials (ArrayList tutorials) {
         this.tutorials = tutorials;
     }
 

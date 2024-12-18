@@ -26,7 +26,7 @@ public class ThaiBoxing extends Session{
 
     @Override
     public int GetMany() {
-        return 100;
+        return this.cash;
     }
 
 }

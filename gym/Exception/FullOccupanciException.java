@@ -5,7 +5,7 @@ public class FullOccupanciException extends RuntimeException {
         super(message);
     }
     public String getMessage(){
-        String s = "FullOccupanciException";
+        String s = "Full Occupanci Exception";
         return s;
     }
 }
