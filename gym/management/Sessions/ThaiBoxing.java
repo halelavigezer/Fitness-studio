@@ -6,7 +6,6 @@ import gym.customers.Instructor;
 public class ThaiBoxing extends Session{
     private int pepole;
     private int cash;
-    private  String name="ThaiBoxing";
 
     public ThaiBoxing(String date, ForumType forumType, Instructor instructor) {
         super(date, forumType, instructor);

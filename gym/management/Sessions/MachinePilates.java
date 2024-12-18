@@ -6,8 +6,6 @@ import gym.customers.Instructor;
 public class MachinePilates extends Session {
         private int people;
         private int cash;
-        private   String name ="MachinePilates";
-
     public MachinePilates(String date, ForumType forumType, Instructor instructor) {
         super(date, forumType, instructor);
         this.people=10;

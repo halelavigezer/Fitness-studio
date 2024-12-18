@@ -6,6 +6,6 @@ public class InstructorNotQualifiedException extends RuntimeException {
     }
     public String getMessage()
     {
-        return "InstructorNotQualifiedException";
+        return "Instructor Not Qualified Exception";
     }
 }

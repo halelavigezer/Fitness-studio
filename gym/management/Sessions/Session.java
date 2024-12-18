@@ -1,6 +1,5 @@
 package gym.management.Sessions;
 
-import gym.Exception.InstructorNotQualifiedException;
 import gym.customers.Client;
 import gym.customers.ForumType;
 import gym.customers.Instructor;

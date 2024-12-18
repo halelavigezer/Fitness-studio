@@ -17,7 +17,7 @@ public Instructor(Person p1,double salary,ArrayList<SessionType> t) {
 }
 
     public ArrayList getTutorials() {
-        return tutorials;
+        return this.tutorials;
     }
 
     public void setTutorials(ArrayList tutorials) {

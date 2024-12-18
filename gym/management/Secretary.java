@@ -11,7 +11,6 @@ import gym.management.Sessions.TypeFactory;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.Period;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +31,12 @@ public class Secretary
      Client client=new Client(p);
      if(clients.contains(client))
      {
-        throw new InvalidAgeException("InvalidAgeException");
+        throw new InvalidAgeException("Invalid Age Exception");
      }
 
      if (!up18(p.getDateOfBirth()))
      {
-         throw new InvalidAgeException("InvalidAgeException");
+         throw new InvalidAgeException("Invalid Age Exception");
      }
      clients.add(client);
      return client;
@@ -61,7 +60,7 @@ public class Secretary
 
     public void unregisterClient(Client c)throws ClientNotRegisteredException{
         if(!clients.contains(c)) {
-            throw new ClientNotRegisteredException("ClientNotRegisteredException");
+            throw new ClientNotRegisteredException("Client Not Registered Exception");
         }
         clients.remove(c);
     }
@@ -78,7 +77,7 @@ public class Secretary
 
     public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes) throws ClientNotRegisteredException{
         if(!up18(p.getDateOfBirth())) {
-            throw new ClientNotRegisteredException("ClientNotRegisteredException");
+            throw new ClientNotRegisteredException("Client Not Registered Exception");
         }
         Instructor instructor=new Instructor(p,i,sessionTypes);
         instructors.add(instructor);
@@ -86,12 +85,12 @@ public class Secretary
     }
     public Session addSession(SessionType s, String data,ForumType m, Instructor i)throws DuplicateClientException{
         if (!i.getTutorials().contains(m)) {
-            throw new InstructorNotQualifiedException("InstructorNotQualifiedException") ;
+            throw new InstructorNotQualifiedException("Instructor Not Qualified Exception") ;
         }
         //לבדוק אם צריך לעשות בדיקה אם המדריך פנוי באותם שעות
         Session session= TypeFactory.creatsession(s,data,m,i);
         if (sessions.contains(session)) {
-            throw new DuplicateClientException("DuplicateClientException");//צריך לשנות במקום שיש כבר את הלוקח הזה לזה שיש כבר את השיעור הזה
+            throw new DuplicateClientException("Duplicate Client Exception");//צריך לשנות במקום שיש כבר את הלוקח הזה לזה שיש כבר את השיעור הזה
         }
         i.setHours();
         sessions.add(session);
@@ -101,19 +100,19 @@ public class Secretary
     public void registerClientToLesson(Client c, Session s)throws ClientNotRegisteredException,DuplicateClientException
     {
         if (!c.getTypes().contains(s.forumType)) {
-            throw new ClientNotRegisteredException("ClientNotRegisteredException") ;
+            throw new ClientNotRegisteredException("Client Not Registered Exception") ;
         }
         if (s.clients.contains(c))
         {
-            throw new DuplicateClientException("DuplicateClientException");
+            throw new DuplicateClientException("Duplicate Client Exception");
         }
         if(s.getClients().size()>s.GetNumber())
         {
-            throw new FullOccupanciException("FullOccupanciException");
+            throw new FullOccupanciException("Full Occupanci Exception");
         }
         if (c.getPerson().getMany()<s.GetMany())
         {
-            throw new notEnoughMoneyException("notEnoughMoneyException");
+            throw new notEnoughMoneyException("not Enough Money Exception");
         }
         c.getPerson().setMany(c.getPerson().getMany()-s.GetMany());
         s.setClients(c);
