@@ -58,7 +58,7 @@ public class Secretary
         this.person = person;
     }
 
-    public void unregisterClient(Client c)throws ClientNotRegisteredException{
+    public void unregisterClient(Client c){
         if(!clients.contains(c)) {
             throw new ClientNotRegisteredException("Client Not Registered Exception");
         }
@@ -75,15 +75,15 @@ public class Secretary
         return age.getYears() >= 18;
     }
 
-    public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes) throws ClientNotRegisteredException{
+    public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes) {
         if(!up18(p.getDateOfBirth())) {
-            throw new ClientNotRegisteredException("Client Not Registered Exception");
+            throw new InvalidAgeException("Invalid Age Exception");//////אם אםשר לבנות עוד שגיאה
         }
         Instructor instructor=new Instructor(p,i,sessionTypes);
         instructors.add(instructor);
         return instructor;
     }
-    public Session addSession(SessionType s, String data,ForumType m, Instructor i)throws DuplicateClientException{
+    public Session addSession(SessionType s, String data,ForumType m, Instructor i){
         if (!i.getTutorials().contains(m)) {
             throw new InstructorNotQualifiedException("Instructor Not Qualified Exception") ;
         }
@@ -97,7 +97,7 @@ public class Secretary
        return session;
     }
 
-    public void registerClientToLesson(Client c, Session s)throws ClientNotRegisteredException,DuplicateClientException
+    public void registerClientToLesson(Client c, Session s)
     {
         if (!c.getTypes().contains(s.forumType)) {
             throw new ClientNotRegisteredException("Client Not Registered Exception") ;

@@ -21,7 +21,7 @@ public class ThaiBoxing extends Session{
 
     @Override
     public int GetNumber() {
-        return 20 ;
+        return this.pepole ;
     }
 
     @Override

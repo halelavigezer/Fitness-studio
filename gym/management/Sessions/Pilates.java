@@ -22,7 +22,7 @@ public class Pilates extends Session{
 
     @Override
     public int GetNumber() {
-        return 30;
+        return this.pepole;
     }
 
     @Override

@@ -23,7 +23,7 @@ public class Ninja extends Session {
 
     @Override
     public int GetNumber() {
-        return 5;
+        return this.pepole;
     }
 
     @Override

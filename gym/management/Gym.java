@@ -20,7 +20,7 @@ public class Gym {
         if (secretary== null){
             this.secretary= new Secretary(p1,i);
         }
-        this.secretary.setPerson(p1);// אני חושבת שיש פה בעיה אם אחרי רוצים לגשת  אליה שוב
+        this.secretary.setPerson(p1);
         this.secretary.setMany(i);
     }
 
