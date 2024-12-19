@@ -76,9 +76,12 @@ public class Secretary
 
     public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes) {
         if(!up18(p.getDateOfBirth())) {
-            throw new InvalidAgeException("Invalid Age Exception");//////אם אםשר לבנות עוד שגיאה
+            throw new InvalidAgeException("Invalid Age Exception");
         }
         Instructor instructor=new Instructor(p,i,sessionTypes);
+        if(instructors.contains(instructor)) {
+            throw new InstructorNotQualifiedException("Duplicate instructor Exception");
+        }
         instructors.add(instructor);
         return instructor;
     }
@@ -86,10 +89,10 @@ public class Secretary
         if (!i.getTutorials().contains(m)) {
             throw new InstructorNotQualifiedException("Instructor Not Qualified Exception") ;
         }
-        //לבדוק אם צריך לעשות בדיקה אם המדריך פנוי באותם שעות
+
         Session session= TypeFactory.creatsession(s,data,m,i);
         if (sessions.contains(session)) {
-            throw new DuplicateClientException("Duplicate Client Exception");//צריך לשנות במקום שיש כבר את הלוקח הזה לזה שיש כבר את השיעור הזה
+            throw new DuplicateClientException("Duplicate session Exception");
         }
         i.setHours();
         sessions.add(session);
@@ -106,11 +109,11 @@ public class Secretary
         }
         if(s.getClients().size()>s.GetNumber())
         {
-            throw new FullOccupanciException("Full Occupanci Exception");
+            throw new ClientNotRegisteredException("Full Occupanci Exception");
         }
         if (c.getPerson().getMany()<s.GetMany())
         {
-            throw new notEnoughMoneyException("not Enough Money Exception");
+            throw new ClientNotRegisteredException("not Enough Money Exception");
         }
         c.getPerson().setMany(c.getPerson().getMany()-s.GetMany());
         s.setClients(c);
