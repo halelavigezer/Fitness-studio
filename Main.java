@@ -66,7 +66,7 @@ public class Main {
         Session s5 = gymSecretary.addSession(SessionType.Ninja, "14-01-2025 20:00", ForumType.All, i3);
         Session s6 = gymSecretary.addSession(SessionType.ThaiBoxing, "14-01-2025 20:00", ForumType.Male, i1);
 
-        try {
+          try {
             Session s7 = gymSecretary.addSession(SessionType.ThaiBoxing, "10-10-2025 21:00", ForumType.All, i3);
         } catch (InstructorNotQualifiedException e) {
             System.out.println(e.getMessage());

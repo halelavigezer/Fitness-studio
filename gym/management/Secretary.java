@@ -19,8 +19,8 @@ public class Secretary
 {
     protected Person person;
     protected int many;
-    protected List<Client> clients;
-    protected List<Instructor> instructors;
+    protected List<Client> clients=new ArrayList<>();
+    protected List<Instructor> instructors=new ArrayList<>();
     protected List<Session> sessions =new ArrayList<>();
     private List<String>message=new ArrayList<>();
     protected List<String> sessionsData= new ArrayList<>();
@@ -121,7 +121,7 @@ public class Secretary
         }
         instructors.add(instructor);//                                                                            ID: 1116 | Name: Noam | Gender: Male | Birthday: 20-12-1984 | Age: 40 | Balance: 170 | Role: Instructor | Salary per Hour: 50 | Certified Classes: Pilates, Ninja
         int age =getAge(p);
-        employeesdata.add("ID: "+instructor.getPerson().getID()+" | Name: "+instructor.getPerson().getName()+" | Gender: "+instructor.getPerson().getGender()+" | Birthday: "+instructor.getPerson().getDateOfBirth()+" | Age: "+age+" | Balance: "+instructor.getPerson().getMany()+" | Role: Instructor | Salery per Hour: "+instructor.getSalary()+" | Certified Classes:"+mess(instructor.getTutorials()));
+        employeesdata.add("ID: "+instructor.getPerson().getID()+" | Name: "+instructor.getPerson().getName()+" | Gender: "+instructor.getPerson().getGender()+" | Birthday: "+instructor.getPerson().getDateOfBirth()+" | Age: "+age+" | Balance: "+instructor.getPerson().getMany()+" | Role: Instructor | Salery per Hour: "+instructor.getSalary()+" | Certified Classes:"+Mess(instructor.getTutorials()));
         message.add("Hired new instructor: "+p.getName()+" with salary per hour: "+i);
         return instructor;
     }
@@ -132,7 +132,7 @@ public class Secretary
         return Period.between(birthDate, currentDate).getYears();
     }
 
-    public Session addSession(SessionType s, String data,ForumType m, Instructor i){
+    public Session addSession(SessionType s, String data,ForumType m, Instructor i)throws InstructorNotQualifiedException {
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -267,15 +267,28 @@ public class Secretary
             System.out.println(client.getPerson().getName()+"Notifications: ["+mess(client.getNotifications())+"]");
         }
     }
-    public static String mess(ArrayList<String>s)
-    {
-        String S=null;
-        for (int i= 0 ;i <s.size() ; i++)
-        {
-            S+=","+s.get(i);
+    public static String mess(ArrayList<String> s) {
+        String result = "";
+        for (int i = 0; i < s.size(); i++) {
+            result += s.get(i);  // הוספת המחרוזת
+            if (i != s.size() - 1) {
+                result += ",";  // הוספת פסיק אחרי כל אלמנט חוץ מהאחרון
+            }
         }
-        return S;
+        return result;
     }
+    public static String Mess(ArrayList<SessionType> s) {
+        String result = "";
+        for (int i = 0; i < s.size(); i++) {
+            result += s.get(i).toString();  // המרה למחרוזת בעזרת toString()
+            if (i != s.size() - 1) {
+                result += ",";  // הוספת פסיק אחרי כל אלמנט חוץ מהאחרון
+            }
+        }
+        return result;
+    }
+
+
 }
 
 
