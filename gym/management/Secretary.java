@@ -126,7 +126,7 @@ public class Secretary
         return instructor;
     }
     public static int getAge(Person person) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Adjust format if needed
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // Adjust format if needed
         LocalDate birthDate = LocalDate.parse(person.getDateOfBirth(), formatter);
         LocalDate currentDate = LocalDate.now();
         return Period.between(birthDate, currentDate).getYears();
@@ -194,7 +194,7 @@ public class Secretary
     }
 
     public boolean sessionBefor(String s) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); // הפורמט של תאריך ושעה
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"); // הפורמט של תאריך ושעה
         LocalDateTime dateTime = LocalDateTime.parse(s, formatter);
         LocalDateTime now = LocalDateTime.now();// התאריך של היום
         if (dateTime.isBefore(now)) {
