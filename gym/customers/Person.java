@@ -2,6 +2,7 @@ package gym.customers;
 
 public class Person
 {
+    public static int cunt=0;
     protected String name;
     protected int ID =1011;
     protected double many;
@@ -43,6 +44,9 @@ public class Person
 
     public String getDateOfBirth() {
         return DateOfBirth;
+    }
+    public int getID(){
+        return this.ID;
     }
 
     public void setDateOfBirth(String dateOfBirth) {

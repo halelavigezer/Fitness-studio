@@ -7,6 +7,7 @@ public class Gym {
     public String mane;
     public Secretary secretary;
 
+
     private Gym(){}
 
     public static Gym getInstance(){
@@ -32,7 +33,7 @@ public class Gym {
     }
 
 
-    public Secretary getSecretary() {
-        return this.secretary;
+    public static Secretary getSecretary() {
+        return gym.secretary;
     }
 }
