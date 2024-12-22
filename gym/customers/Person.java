@@ -3,12 +3,14 @@ package gym.customers;
 public class Person
 {
     protected String name;
+    protected int ID =1011;
     protected double many;
     protected Gender gender;
     protected String DateOfBirth;
 
     public Person(String name, double many , Gender gender, String DateOfBirth)
     {
+        this.ID=this.ID+cunt;
         this.name=name;
         this.many=many;
         this.gender=gender;
