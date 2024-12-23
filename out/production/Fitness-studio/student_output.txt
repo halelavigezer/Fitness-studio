@@ -1,0 +1,2 @@
+Invalid Age Exception
+Client Not Registered Exception
