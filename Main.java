@@ -117,6 +117,7 @@ public class Main {
             System.out.println("Error: Former secretaries are not permitted to perform actions");
         }
 
+
         System.out.println("\n---Actions history---");
         newGymSecretary.printActions();
 

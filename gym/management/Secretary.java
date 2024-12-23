@@ -33,17 +33,17 @@ public class Secretary
        this.many=many;
        message.add("A new secretary has started working at the gym: "+person.getName());
    }
-   public boolean correctSecretary(){
-       boolean ans=false;
-       if (Gym.getSecretary().equals(this)){
-           ans =true;
-       }
-       return ans;
-   }
+
+
+
+    public boolean correctSecretary() {
+        return Gym.getSecretary().equals(this);
+    }
+
 
     public Client registerClient(Person p) throws NullPointerException,DuplicateClientException,InvalidAgeException{
        if (!correctSecretary()){
-           throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+           throw new NullPointerException(" Former secretaries are not permitted to perform actions");
        }
      Client client=new Client(p);
      if(clients.contains(client)) {
@@ -60,35 +60,35 @@ public class Secretary
 
     public int getMany() throws NullPointerException{
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         return many;
     }
 
     public void setMany(int many)throws NullPointerException {
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         this.many = many;
     }
 
     public Person getPerson() throws NullPointerException{
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         return person;
     }
 
     protected void setPerson(Person person) throws NullPointerException{
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         this.person = person;
     }
 
     public void unregisterClient(Client c) throws NullPointerException,ClientNotRegisteredException{
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         if(!clients.contains(c)) {
             throw new ClientNotRegisteredException("Error: The client is already registered for this lesson");
@@ -99,7 +99,7 @@ public class Secretary
 
     public boolean up18(String dateString)throws NullPointerException {
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate birthDate = LocalDate.parse(dateString, formatter);
@@ -110,7 +110,7 @@ public class Secretary
 
     public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes)throws NullPointerException,InvalidAgeException,InstructorNotQualifiedException {
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         if(!up18(p.getDateOfBirth())) {
             throw new InvalidAgeException("Error: Client must be at least 18 years old to register");
@@ -134,15 +134,15 @@ public class Secretary
 
     public Session addSession(SessionType s, String data,ForumType m, Instructor i)throws InstructorNotQualifiedException ,NullPointerException,DuplicateClientException{
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
-        if (!i.getTutorials().contains(m)) {
+        if (!i.getTutorials().contains(s)) {
             throw new InstructorNotQualifiedException("Error: Instructor is not qualified to conduct this session type.") ;
         }
         Session session= TypeFactory.creatsession(s,data,m,i);
-        if (sessions.contains(session)) {
-            throw new DuplicateClientException("Error: Registration is required before attempting to unregister");
-        }
+//        if (sessions.contains(session)) {
+//            throw new DuplicateClientException("Error: Registration is required before attempting to unregister");
+//        }
         i.setHours();
         sessions.add(session);
         sessionsData.add("Session Type:" +session.gettype()+" | Date: "+session.date+" | Forum: "+session.forumType+" | Instructor: "+session.instructor.getPerson().getName()+" | Participants: "+session.clients.size()+"/"+session.GetNumber());
@@ -152,15 +152,13 @@ public class Secretary
 
     public void registerClientToLesson(Client c, Session s)throws NullPointerException, ClientNotRegisteredException, DuplicateClientException {
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
-        if (sessionBefor(s.date))
+        if (sessionBefore(s.getDate()))
         {
             message.add("Failed registration: Session is not in the future");
-            throw new ClientNotRegisteredException("Error: Session is not in the future");
         }
         if (!clients.contains(c)){
-            message.add("Failed registration: Session is not in the future");
             throw new ClientNotRegisteredException("Error: The client is not registered with the gym and cannot enroll in lessons");
         }
         if (!c.getTypes().contains(s.forumType)) {
@@ -171,41 +169,39 @@ public class Secretary
             else {
                 message.add("Failed registration: Client's gender doesn't match the session's gender requirements");
             }
-            throw new ClientNotRegisteredException("Client Not Registered Exception") ;
         }
         if (s.clients.contains(c)) {
-            message.add("Failed registration: Session is not in the future");////////////////////
-            throw new DuplicateClientException("Error: The client is already registered");////////////////
+            throw new DuplicateClientException("Error: The client is already registered");///////////
         }
         if(s.getClients().size()>s.GetNumber())
         {
             message.add("Failed registration: No available spots for session");
-            throw new ClientNotRegisteredException("Error: No available spots for session");
         }
         if (c.getPerson().getMany()<s.GetMany())
         {
             message.add("Failed registration: Client doesn't have enough balance");
-            throw new ClientNotRegisteredException("Error: Client doesn't have enough balance");
         }
-        c.getPerson().setMany(c.getPerson().getMany()-s.GetMany());
-        this.totalMany+=s.GetMany();
-        message.add("Registered client: "+c.getPerson().getName()+" to session: "+s.forumType+" on "+s.date+" for price: "+s.GetMany());
-        s.setClients(c);
+        else {
+            c.getPerson().setMany(c.getPerson().getMany() - s.GetMany());
+            this.totalMany += s.GetMany();
+            message.add("Registered client: " + c.getPerson().getName() + " to session: " + s.forumType + " on " + s.date + " for price: " + s.GetMany());
+            s.setClients(c);
+        }
     }
 
-    public boolean sessionBefor(String s) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"); // הפורמט של תאריך ושעה
-        LocalDateTime dateTime = LocalDateTime.parse(s, formatter);
-        LocalDateTime now = LocalDateTime.now();// התאריך של היום
-        if (dateTime.isBefore(now)) {
-            return true;
-        }
-        return false;
+    public boolean sessionBefore(String dateString) {
+        // יצירת פורמט תאריך-שעה המתאים למבנה של המחרוזת
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        // המרת המחרוזת לאובייקט LocalDateTime
+        LocalDateTime dateTime = LocalDateTime.parse(dateString, formatter);
+        LocalDateTime now = LocalDateTime.now();
+        // החזרת אמת אם התאריך עבר
+        return !dateTime.isAfter(now);
     }
 
     public void notify(Session p, String s)throws NullPointerException {
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         for (Client client: p.getClients()) {
                 client.update(s);
@@ -214,7 +210,7 @@ public class Secretary
     }
     public void notify (String data,String s)throws NullPointerException{
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         for (Session session:sessions){
             String n= session.date;
@@ -230,7 +226,7 @@ public class Secretary
 
     public void notify(String m) throws NullPointerException{
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         for (Client client:clients) {
             client.update(m);
@@ -240,7 +236,7 @@ public class Secretary
 
     public void paySalaries() throws NullPointerException{
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         for (int i=0; i<this.instructors.size();i++) {
              double balance = this.instructors.get(i).getPerson().getMany();
@@ -256,7 +252,7 @@ public class Secretary
 
     public void printActions() throws NullPointerException{
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
+            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
         }
         for(String string:message)
         {
