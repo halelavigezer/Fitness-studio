@@ -31,4 +31,7 @@ public abstract class Session {
     public abstract SessionType gettype() ;
     public abstract int GetNumber();
     public abstract int GetMany();
+    public String getDate(){
+        return this.date;
+    }
 }
