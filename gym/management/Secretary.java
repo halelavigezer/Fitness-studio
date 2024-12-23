@@ -41,7 +41,7 @@ public class Secretary
        return ans;
    }
 
-    public Client registerClient(Person p) {
+    public Client registerClient(Person p) throws NullPointerException,DuplicateClientException,InvalidAgeException{
        if (!correctSecretary()){
            throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
        }
@@ -58,35 +58,35 @@ public class Secretary
      return client;
     }
 
-    public int getMany() {
+    public int getMany() throws NullPointerException{
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
         return many;
     }
 
-    public void setMany(int many) {
+    public void setMany(int many)throws NullPointerException {
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
         this.many = many;
     }
 
-    public Person getPerson() {
+    public Person getPerson() throws NullPointerException{
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
         return person;
     }
 
-    protected void setPerson(Person person) {
+    protected void setPerson(Person person) throws NullPointerException{
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
         this.person = person;
     }
 
-    public void unregisterClient(Client c){
+    public void unregisterClient(Client c) throws NullPointerException,ClientNotRegisteredException{
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -97,7 +97,7 @@ public class Secretary
         clients.remove(c);
     }
 
-    public boolean up18(String dateString) {
+    public boolean up18(String dateString)throws NullPointerException {
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -108,7 +108,7 @@ public class Secretary
         return age.getYears() >= 18;
     }
 
-    public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes) {
+    public Instructor hireInstructor(Person p, int i, ArrayList<SessionType> sessionTypes)throws NullPointerException,InvalidAgeException,InstructorNotQualifiedException {
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -132,7 +132,7 @@ public class Secretary
         return Period.between(birthDate, currentDate).getYears();
     }
 
-    public Session addSession(SessionType s, String data,ForumType m, Instructor i)throws InstructorNotQualifiedException {
+    public Session addSession(SessionType s, String data,ForumType m, Instructor i)throws InstructorNotQualifiedException ,NullPointerException,DuplicateClientException{
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -150,7 +150,7 @@ public class Secretary
         return session;
     }
 
-    public void registerClientToLesson(Client c, Session s) {
+    public void registerClientToLesson(Client c, Session s)throws NullPointerException, ClientNotRegisteredException, DuplicateClientException {
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -203,7 +203,7 @@ public class Secretary
         return false;
     }
 
-    public void notify(Session p, String s) {
+    public void notify(Session p, String s)throws NullPointerException {
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -212,7 +212,7 @@ public class Secretary
         }
         message.add("A message was sent to everyone registered for session "+p.forumType+" on "+p.date+" : "+s);
     }
-    public void notify (String data,String s){
+    public void notify (String data,String s)throws NullPointerException{
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -228,7 +228,7 @@ public class Secretary
         message.add("A message was sent to everyone registered for a session on "+data+" : "+s);
     }
 
-    public void notify(String m) {
+    public void notify(String m) throws NullPointerException{
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -238,7 +238,7 @@ public class Secretary
         message.add("A message was sent to all gym clients: "+m);
     }
 
-    public void paySalaries() {
+    public void paySalaries() throws NullPointerException{
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
@@ -254,7 +254,7 @@ public class Secretary
         message.add("Salaries have been paid to all employees");
     }
 
-    public void printActions() {
+    public void printActions() throws NullPointerException{
         if (!correctSecretary()){
             throw new NullPointerException(" Former secretaries are not permitted to perform actions");///לבדק אם זה סבבה להשתמש בזב
         }
