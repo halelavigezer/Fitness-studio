@@ -118,6 +118,7 @@ public class Main {
         }
 
 
+
         System.out.println("\n---Actions history---");
         newGymSecretary.printActions();
 
