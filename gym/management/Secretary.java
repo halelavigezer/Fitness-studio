@@ -133,9 +133,15 @@ public class Secretary
         Session session= TypeFactory.creatsession(s,data,m,i);
         i.setHours();
         sessions.add(session);
-        sessionsData.add("Session Type:" +session.gettype()+" | Date: "+session.date+" | Forum: "+session.forumType+" | Instructor: "+session.instructor.getPerson().getName()+" | Participants: "+session.clients.size()+"/"+session.GetNumber());
-        message.add("Created new session: "+s+" on "+data+" with instructor: "+i.getPerson().getName());
+        LocalDateTime dateTime = convertToDateTime(data);
+        message.add("Created new session: "+s+" on "+dateTime+" with instructor: "+i.getPerson().getName());
         return session;
+    }
+    public static LocalDateTime convertToDateTime(String dateTimeString) {
+        // מגדירים פורמט צפוי
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        // ממירים את המחרוזת לפורמט זמן
+        return LocalDateTime.parse(dateTimeString, formatter);
     }
 
     public void registerClientToLesson(Client c, Session s)throws NullPointerException, ClientNotRegisteredException, DuplicateClientException {
@@ -147,16 +153,17 @@ public class Secretary
             message.add("Failed registration: Session is not in the future");
             allConditionsPassed=false;
         }
-        if (!clients.contains(c)){
+        if (!clients.contains(c)) {
             throw new ClientNotRegisteredException("Error: The client is not registered with the gym and cannot enroll in lessons");
         }
         if (!c.getTypes().contains(s.forumType)) {
-            if (s.forumType.equals("Seniors"))
-            {
+            if (s.forumType.equals(ForumType.Seniors)) {
                 message.add("Failed registration: Client doesn't meet the age requirements for this session (Seniors)");
+                allConditionsPassed=false;
             }
             else {
                 message.add("Failed registration: Client's gender doesn't match the session's gender requirements");
+                allConditionsPassed=false;
             }
         }
          if (s.clients.contains(c)) {
@@ -166,17 +173,19 @@ public class Secretary
             message.add("Failed registration: No available spots for session");
              allConditionsPassed=false;
         }
-        if (c.getPerson().getMany()<s.GetMany())
+         if (c.getPerson().getMany()<s.GetMany())
         {
             message.add("Failed registration: Client doesn't have enough balance");
             allConditionsPassed=false;
         }
-        else {
-            c.getPerson().setMany(c.getPerson().getMany() - s.GetMany());
-            this.totalMany += s.GetMany();
-            message.add("Registered client: " + c.getPerson().getName() + " to session: " + s.forumType + " on " + s.date + " for price: " + s.GetMany());
-            s.setClients(c);
-        }
+         if(allConditionsPassed) {
+             c.getPerson().setMany(c.getPerson().getMany() - s.GetMany());
+             Gym.upMany(s.GetMany());
+             LocalDateTime dateTime = convertToDateTime(s.date);
+             message.add("Registered client: " + c.getPerson().getName() + " to session: " + s.gettype() + " on " + dateTime + " for price: " + s.GetMany());
+             s.setClients(c);
+         }
+
     }
 
     public boolean sessionBefore(String dateString) {
@@ -196,7 +205,9 @@ public class Secretary
         for (Client client: p.getClients()) {
                 client.update(s);
         }
-        message.add("A message was sent to everyone registered for session "+p.forumType+" on "+p.date+" : "+s);
+
+
+        message.add("A message was sent to everyone registered for session "+p.gettype()+" on "+p.date+" : "+s);
     }
     public void notify (String data,String s)throws NullPointerException{
         if (!correctSecretary()){
@@ -211,6 +222,7 @@ public class Secretary
                 }
             }
         }
+
         message.add("A message was sent to everyone registered for a session on "+data+" : "+s);
     }
 
