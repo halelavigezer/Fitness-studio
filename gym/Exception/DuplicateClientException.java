@@ -5,7 +5,7 @@ public class DuplicateClientException extends RuntimeException{
         super(message);
     }
     public String getMessage(){
-        String s = "Duplicate Client Exception";
+        String s = "Error: The client is already registered";
         return s;
     }
 }
