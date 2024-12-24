@@ -50,6 +50,18 @@ public class Client implements Observer {
     public void update(String s) {
         this.notify.add(s);
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // אותו אובייקט בזיכרון
+        if (o == null || getClass() != o.getClass()) return false; // סוג שונה
+        Client client = (Client) o;
+        return person.getID()==(client.getPerson().getID()); // השוואה לפי id
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id); // ייחודיות לפי id
+    }
 }
 
 

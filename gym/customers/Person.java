@@ -12,6 +12,7 @@ public class Person
     public Person(String name, double many , Gender gender, String DateOfBirth)
     {
         this.ID=this.ID+cunt;
+        cunt++;
         this.name=name;
         this.many=many;
         this.gender=gender;

@@ -19,14 +19,14 @@ public class Secretary
 {
     protected Person person;
     protected int many;
-    protected List<Client> clients=new ArrayList<>();
-    protected List<Instructor> instructors=new ArrayList<>();
-    protected List<Session> sessions =new ArrayList<>();
-    private List<String>message=new ArrayList<>();
-    protected List<String> sessionsData= new ArrayList<>();
-    protected List<String> employeesdata =new ArrayList<>();
-    protected List<String> Clients=new ArrayList<>();
-    private double totalMany =0;
+    protected static List<Client> clients=new ArrayList<>();
+    protected static List<Instructor> instructors=new ArrayList<>();
+    protected static List<Session> sessions =new ArrayList<>();
+    private static List<String>message=new ArrayList<>();
+    protected static List<String> sessionsData= new ArrayList<>();
+    protected static List<String> employeesdata =new ArrayList<>();
+    protected static List<String> Clients=new ArrayList<>();
+    private static double totalMany =0;
 
    protected Secretary(Person person, int many) {
        this.person=person;
@@ -37,7 +37,7 @@ public class Secretary
 
 
     public boolean correctSecretary() {
-        return Gym.getSecretary().equals(this);
+        return Gym.getInstance().getSecretary().equals(this);
     }
 
 
@@ -152,7 +152,7 @@ public class Secretary
 
     public void registerClientToLesson(Client c, Session s)throws NullPointerException, ClientNotRegisteredException, DuplicateClientException {
         if (!correctSecretary()){
-            throw new NullPointerException(" Former secretaries are not permitted to perform actions");
+            throw new NullPointerException();
         }
         if (sessionBefore(s.getDate()))
         {

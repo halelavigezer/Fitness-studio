@@ -7,6 +7,6 @@ public class InstructorNotQualifiedException extends RuntimeException {
 
     public String getMessage()
     {
-        return "Instructor Not Qualified Exception";
+        return "Error: Instructor is not qualified to conduct this session type.";
     }
 }

@@ -20,20 +20,17 @@ public class Gym {
     }
 
     public void setSecretary(Person p1, int i) {
-        if (secretary== null){
+           if(secretary!=null) {
+               secretary.employeesdata.remove("ID: " + secretary.getPerson().getID() + " | Name: " + secretary.getPerson().getName() + " | Gender: " + secretary.getPerson().getGender() + " | Birthday: " + secretary.getPerson().getDateOfBirth() + " | Age: " + Secretary.getAge(secretary.getPerson()) + " | Balance: " + secretary.getPerson().getMany() + " | Role: Secretary | Salery per Hour: " + secretary.many);
+           }
             this.secretary= new Secretary(p1,i);
+
             secretary.employeesdata.add("ID: "+secretary.getPerson().getID()+" | Name: "+secretary.getPerson().getName()+" | Gender: "+secretary.getPerson().getGender()+" | Birthday: "+secretary.getPerson().getDateOfBirth()+" | Age: "+Secretary.getAge(secretary.getPerson())+" | Balance: "+secretary.getPerson().getMany()+" | Role: Secretary | Salery per Hour: "+secretary.many);
-        }
-        else {
-            secretary.employeesdata.remove("ID: "+secretary.getPerson().getID()+" | Name: "+secretary.getPerson().getName()+" | Gender: "+secretary.getPerson().getGender()+" | Birthday: "+secretary.getPerson().getDateOfBirth()+" | Age: "+Secretary.getAge(secretary.getPerson())+" | Balance: "+secretary.getPerson().getMany()+" | Role: Secretary | Salery per Hour: "+secretary.many);
-            this.secretary.setPerson(p1);
-            this.secretary.setMany(i);
-            secretary.employeesdata.add("ID: "+secretary.getPerson().getID()+" | Name: "+secretary.getPerson().getName()+" | Gender: "+secretary.getPerson().getGender()+" | Birthday: "+secretary.getPerson().getDateOfBirth()+" | Age: "+Secretary.getAge(secretary.getPerson())+" | Balance: "+secretary.getPerson().getMany()+" | Role: Secretary | Salery per Hour: "+secretary.many);
-        }
+
     }
 
 
-    public static Secretary getSecretary() {
-        return gym.secretary;
+    public Secretary getSecretary() {
+        return this.secretary;
     }
 }

@@ -8,6 +8,6 @@ public class InvalidAgeException extends RuntimeException
     }
     public String getMessage()
     {
-        return "Invalid Age Exception";
+        return "Error: Client must be at least 18 years old to register";
     }
 }

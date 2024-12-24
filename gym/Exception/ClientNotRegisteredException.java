@@ -5,7 +5,7 @@ public class ClientNotRegisteredException extends RuntimeException {
         super(message);
     }
     public String getMessage(){
-        String s = "Client Not Registered Exception";
+        String s = "Error: Registration is required before attempting to unregister";
         return s;
     }
 }
