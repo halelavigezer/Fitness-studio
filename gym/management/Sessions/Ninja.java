@@ -15,7 +15,7 @@ public class Ninja extends Session {
 
     @Override
     public SessionType gettype() {
-        return null;
+        return SessionType.Ninja;
     }
     public int getCash() {
         return cash;

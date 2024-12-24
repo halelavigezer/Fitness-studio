@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class Instructor {
 protected Person person;
-protected  double salary;
+protected  int salary;
 protected ArrayList<SessionType> tutorials;
-protected double hours;
+protected int hours;
 
-public Instructor(Person p1,double salary,ArrayList<SessionType> t) {
+public Instructor(Person p1,int salary,ArrayList<SessionType> t) {
     this.person = p1;
     this.salary = salary;
     this.tutorials = t;
@@ -25,11 +25,11 @@ public Instructor(Person p1,double salary,ArrayList<SessionType> t) {
         this.tutorials = tutorials;
     }
 
-    public double getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
@@ -43,7 +43,7 @@ public Instructor(Person p1,double salary,ArrayList<SessionType> t) {
     public void  setHours(){
     this.hours++;
     }
-    public double getHours(){
+    public int getHours(){
     return this.hours;
     }
 }

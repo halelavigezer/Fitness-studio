@@ -2,12 +2,14 @@ package gym.Exception;
 
 public class InvalidAgeException extends RuntimeException
 {
+    private String message;
     public InvalidAgeException(String message)
     {
         super(message);
+        this.message=message;
     }
     public String getMessage()
     {
-        return "Error: Client must be at least 18 years old to register";
+        return this.message;
     }
 }

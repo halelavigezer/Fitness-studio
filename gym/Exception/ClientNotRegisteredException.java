@@ -1,11 +1,12 @@
 package gym.Exception;
 
 public class ClientNotRegisteredException extends RuntimeException {
+    private String additionalMessage;
     public ClientNotRegisteredException(String message) {
         super(message);
+        this.additionalMessage=message;
     }
     public String getMessage(){
-        String s = "Error: Registration is required before attempting to unregister";
-        return s;
+        return this.additionalMessage;
     }
 }

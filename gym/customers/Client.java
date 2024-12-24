@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Client implements Observer {
     protected Person person;
@@ -60,7 +61,7 @@ public class Client implements Observer {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id); // ייחודיות לפי id
+        return Objects.hash(person.getID()); // ייחודיות לפי id
     }
 }
 

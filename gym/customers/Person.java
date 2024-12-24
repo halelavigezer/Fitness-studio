@@ -5,11 +5,11 @@ public class Person
     public static int cunt=0;
     protected String name;
     protected int ID =1011;
-    protected double many;
+    protected int many;
     protected Gender gender;
     protected String DateOfBirth;
 
-    public Person(String name, double many , Gender gender, String DateOfBirth)
+    public Person(String name, int many , Gender gender, String DateOfBirth)
     {
         this.ID=this.ID+cunt;
         cunt++;
@@ -27,11 +27,11 @@ public class Person
         this.name = name;
     }
 
-    public double getMany() {
+    public int getMany() {
         return many;
     }
 
-    public void setMany(double many) {
+    public void setMany(int many) {
         this.many = many;
     }
 
