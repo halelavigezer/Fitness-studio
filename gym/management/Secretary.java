@@ -214,8 +214,8 @@ public class Secretary
         }
         for (Session session:sessions){
             String n= session.date;
-            String sudn = n.substring(0,11);
-            if (sudn == data) {
+            String sudn = n.substring(0,10);
+            if (sudn.equals(data) ) {
                 for (Client c :session.getClients()){
                     c.update(s);
                 }
