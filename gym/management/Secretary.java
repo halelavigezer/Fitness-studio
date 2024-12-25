@@ -205,9 +205,8 @@ public class Secretary
         for (Client client: p.getClients()) {
                 client.update(s);
         }
-
-
-        message.add("A message was sent to everyone registered for session "+p.gettype()+" on "+p.date+" : "+s);
+        LocalDateTime dateTime= convertToDateTime(p.date);
+        message.add("A message was sent to everyone registered for session "+p.gettype()+" on "+dateTime+" : "+s);
     }
     public void notify (String data,String s)throws NullPointerException{
         if (!correctSecretary()){
@@ -222,9 +221,16 @@ public class Secretary
                 }
             }
         }
-
-        message.add("A message was sent to everyone registered for a session on "+data+" : "+s);
+        LocalDate dateTime= convertToDate(data);
+        message.add("A message was sent to everyone registered for a session on "+dateTime+" : "+s);
     }
+    public static LocalDate convertToDate(String dateString) {
+        // מגדירים פורמט צפוי
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        // ממירים את המחרוזת לפורמט תאריך
+        return LocalDate.parse(dateString, formatter);
+    }
+
 
     public void notify(String m) throws NullPointerException{
         if (!correctSecretary()){
