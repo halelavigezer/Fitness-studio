@@ -37,11 +37,11 @@ Failed registration: Client doesn't have enough balance
 Failed registration: Session is not in the future
 Failed registration: Client's gender doesn't match the session's gender requirements
 Failed registration: Client doesn't have enough balance
-Registered client: Nofar to session: null on 2025-01-14T20:00 for price: 150
-Registered client: Maayan to session: null on 2025-01-14T20:00 for price: 150
-Registered client: Shachar to session: null on 2025-01-14T20:00 for price: 150
-Registered client: Yuval to session: null on 2025-01-14T20:00 for price: 150
-Registered client: Neta to session: null on 2025-01-14T20:00 for price: 150
+Registered client: Nofar to session: Ninja on 2025-01-14T20:00 for price: 150
+Registered client: Maayan to session: Ninja on 2025-01-14T20:00 for price: 150
+Registered client: Shachar to session: Ninja on 2025-01-14T20:00 for price: 150
+Registered client: Yuval to session: Ninja on 2025-01-14T20:00 for price: 150
+Registered client: Neta to session: Ninja on 2025-01-14T20:00 for price: 150
 Failed registration: No available spots for session
 Unregistered client: Maayan
 A message was sent to everyone registered for session ThaiBoxing on 2025-01-01T14:00 : The instructor will be a few minutes late for the session
@@ -73,9 +73,9 @@ ID: 1116 | Name: Noam | Gender: Male | Birthday: 20-12-1984 | Age: 40 | Balance:
 ID: 1113 | Name: Maayan | Gender: Female | Birthday: 21-12-2005 | Age: 19 | Balance: 50 | Role: Secretary | Salary per Month: 8000
 
 Sessions Data:
-Session Type:Pilates | Date: 23-01-2025 10:00 | Forum: All | Instructor: Yuval | Participants: 1/30
-Session Type:MachinePilates | Date: 23-10-2024 08:00 | Forum: Female | Instructor: Shachar | Participants: 0/10
-Session Type:Pilates | Date: 25-01-2025 09:30 | Forum: Seniors | Instructor: Noam | Participants: 0/30
-Session Type:ThaiBoxing | Date: 01-01-2025 14:00 | Forum: All | Instructor: Yuval | Participants: 2/20
-Session Type:null | Date: 14-01-2025 20:00 | Forum: All | Instructor: Noam | Participants: 5/5
-Session Type:ThaiBoxing | Date: 14-01-2025 20:00 | Forum: Male | Instructor: Shachar | Participants: 0/20
+Session Type: Pilates | Date: 23-01-2025 10:00 | Forum: All | Instructor: Yuval | Participants: 1/30
+Session Type: MachinePilates | Date: 23-10-2024 08:00 | Forum: Female | Instructor: Shachar | Participants: 0/10
+Session Type: Pilates | Date: 25-01-2025 09:30 | Forum: Seniors | Instructor: Noam | Participants: 0/30
+Session Type: ThaiBoxing | Date: 01-01-2025 14:00 | Forum: All | Instructor: Yuval | Participants: 2/20
+Session Type: Ninja | Date: 14-01-2025 20:00 | Forum: All | Instructor: Noam | Participants: 5/5
+Session Type: ThaiBoxing | Date: 14-01-2025 20:00 | Forum: Male | Instructor: Shachar | Participants: 0/20

@@ -267,7 +267,7 @@ public class Secretary
         {
             System.out.println(string);
         }
-        System.out.println();
+
     }
 
 
