@@ -58,7 +58,7 @@ public class Gym {
 
         ans += "\nEmployees Data:\n";
         for (Instructor instructor : secretary.instructors) {
-            ans += ("ID: "+instructor.getPerson().getID()+" | Name: "+instructor.getPerson().getName()+" | Gender: "+instructor.getPerson().getGender()+" | Birthday: "+instructor.getPerson().getDateOfBirth()+" | Age: "+secretary.getAge(instructor.getPerson())+" | Balance: "+instructor.getPerson().getMany()+" | Role: Instructor | Salery per Hour: "+instructor.getSalary()+" | Certified Classes:"+secretary.Mess(instructor.getTutorials())) + "\n"; // הוספת כל עובד לשורה נפרדת
+            ans += ("ID: "+instructor.getPerson().getID()+" | Name: "+instructor.getPerson().getName()+" | Gender: "+instructor.getPerson().getGender()+" | Birthday: "+instructor.getPerson().getDateOfBirth()+" | Age: "+secretary.getAge(instructor.getPerson())+" | Balance: "+instructor.getPerson().getMany()+" | Role: Instructor | Salary per Hour: "+instructor.getSalary()+" | Certified Classes: "+secretary.Mess(instructor.getTutorials())) + "\n"; // הוספת כל עובד לשורה נפרדת
         }
         ans += ("ID: "+secretary.getPerson().getID()+" | Name: "+secretary.getPerson().getName()+" | Gender: "+secretary.getPerson().getGender()+" | Birthday: "+secretary.getPerson().getDateOfBirth()+" | Age: "+secretary.getAge(secretary.getPerson())+" | Balance: "+secretary.getPerson().getMany()+" | Role: Secretary | Salary per Month: "+secretary.many)+"\n\n";
         for (Session session : secretary.sessions) {

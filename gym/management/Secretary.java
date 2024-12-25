@@ -214,8 +214,8 @@ public class Secretary
         }
         for (Session session:sessions){
             String n= session.date;
-            String sudn = n.substring(0,11);
-            if (sudn == data) {
+            String sudn = n.substring(0,10);
+            if (sudn.equals(data) ) {
                 for (Client c :session.getClients()){
                     c.update(s);
                 }
@@ -276,7 +276,7 @@ public class Secretary
         for (int i = 0; i < s.size(); i++) {
             result += s.get(i).toString();  // המרה למחרוזת בעזרת toString()
             if (i != s.size() - 1) {
-                result += ",";  // הוספת פסיק אחרי כל אלמנט חוץ מהאחרון
+                result += ", ";  // הוספת פסיק אחרי כל אלמנט חוץ מהאחרון
             }
         }
         return result;

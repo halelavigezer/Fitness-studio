@@ -4,7 +4,7 @@ public class Person
 {
     public static int cunt=0;
     protected String name;
-    protected int ID =1011;
+    protected int ID =1111;
     protected int many;
     protected Gender gender;
     protected String DateOfBirth;
