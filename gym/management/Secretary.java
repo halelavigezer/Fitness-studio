@@ -88,9 +88,9 @@ public class Secretary
         }
         if(!clients.contains(c)) {
             throw new ClientNotRegisteredException("Error: Registration is required before attempting to unregister");
-        }else {
-            message.add("Unregistered client: "+c.getPerson().getName());
-        clients.remove(c);}
+        }
+        message.add("Unregistered client: " + c.getPerson().getName());
+        clients.remove(c);
     }
 
     public boolean up18(String dateString)throws NullPointerException {
@@ -244,12 +244,12 @@ public class Secretary
              int balance = this.instructors.get(i).getPerson().getMany();
              int hoursWorkeOfInstructor = this.instructors.get(i).getHours();
              int getSalaryOfInstructor= this.instructors.get(i).getSalary();
-             int all =balance + getSalaryOfInstructor;
+             int all =balance + hoursWorkeOfInstructor*getSalaryOfInstructor;
             this.instructors.get(i).getPerson().setMany(all);
-            Gym.dounMany( getSalaryOfInstructor);
+            Gym.dounMany( hoursWorkeOfInstructor*getSalaryOfInstructor);
         }
         this.person.setMany(this.person.getMany()+this.many);
-        Gym.dounMany(this.person.getMany());
+        Gym.dounMany(this.many);
         message.add("Salaries have been paid to all employees");
     }
 
