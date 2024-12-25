@@ -63,9 +63,11 @@ public class Gym {
         ans += ("ID: "+secretary.getPerson().getID()+" | Name: "+secretary.getPerson().getName()+" | Gender: "+secretary.getPerson().getGender()+" | Birthday: "+secretary.getPerson().getDateOfBirth()+" | Age: "+secretary.getAge(secretary.getPerson())+" | Balance: "+secretary.getPerson().getMany()+" | Role: Secretary | Salary per Month: "+secretary.many)+"\n";
         ans += "\nSessions Data:\n";
         for (Session session : secretary.sessions) {
-            ans +=("Session Type:" +session.gettype()+" | Date: "+session.date+" | Forum: "+session.forumType+" | Instructor: "+session.instructor.getPerson().getName()+" | Participants: "+session.clients.size()+"/"+session.GetNumber())+ "\n"; // הוספת כל סשן לשורה נפרדת
+            ans +=("Session Type: " +session.gettype()+" | Date: "+session.date+" | Forum: "+session.forumType+" | Instructor: "+session.instructor.getPerson().getName()+" | Participants: "+session.clients.size()+"/"+session.GetNumber())+ "\n"; // הוספת כל סשן לשורה נפרדת
         }
-
+        if (ans.endsWith("\n")) {
+            ans = ans.substring(0, ans.length() - 1);
+        }
         return ans;
     }
 

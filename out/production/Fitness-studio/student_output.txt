@@ -72,7 +72,6 @@ ID: 1115 | Name: Yuval | Gender: Female | Birthday: 23-05-1976 | Age: 48 | Balan
 ID: 1116 | Name: Noam | Gender: Male | Birthday: 20-12-1984 | Age: 40 | Balance: 170 | Role: Instructor | Salary per Hour: 50 | Certified Classes: Pilates, Ninja
 ID: 1113 | Name: Maayan | Gender: Female | Birthday: 21-12-2005 | Age: 19 | Balance: 50 | Role: Secretary | Salary per Month: 8000
 
-
 Sessions Data:
 Session Type:Pilates | Date: 23-01-2025 10:00 | Forum: All | Instructor: Yuval | Participants: 1/30
 Session Type:MachinePilates | Date: 23-10-2024 08:00 | Forum: Female | Instructor: Shachar | Participants: 0/10
