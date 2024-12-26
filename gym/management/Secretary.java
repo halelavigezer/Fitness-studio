@@ -32,7 +32,7 @@ public class Secretary
    }
 
 
-
+   //Checking if this is the current secretary
     public boolean correctSecretary() {
         return Gym.getInstance().getSecretary().equals(this);
     }
@@ -93,6 +93,7 @@ public class Secretary
         clients.remove(c);
     }
 
+    //If the person is over 18
     public boolean up18(String dateString)throws NullPointerException {
         if (!correctSecretary()){
             throw new NullPointerException(" Error: Former secretaries are not permitted to perform actions ");
@@ -116,6 +117,7 @@ public class Secretary
         message.add("Hired new instructor: "+p.getName()+" with salary per hour: "+i);
         return instructor;
     }
+    //what is the man's age
     public static int getAge(Person person) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // Adjust format if needed
         LocalDate birthDate = LocalDate.parse(person.getDateOfBirth(), formatter);
@@ -137,6 +139,7 @@ public class Secretary
         message.add("Created new session: "+s+" on "+dateTime+" with instructor: "+i.getPerson().getName());
         return session;
     }
+    //Convert between string and date
     public static LocalDateTime convertToDateTime(String dateTimeString) {
         // מגדירים פורמט צפוי
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
@@ -187,7 +190,7 @@ public class Secretary
          }
 
     }
-
+    //Has the date passed?
     public boolean sessionBefore(String dateString) {
         // יצירת פורמט תאריך-שעה המתאים למבנה של המחרוזת
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
@@ -224,6 +227,8 @@ public class Secretary
         LocalDate dateTime= convertToDate(data);
         message.add("A message was sent to everyone registered for a session on "+dateTime+" : "+s);
     }
+
+    //Convert between string and date
     public static LocalDate convertToDate(String dateString) {
         // מגדירים פורמט צפוי
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -269,8 +274,7 @@ public class Secretary
         }
 
     }
-
-
+    //Returning a list of all Session Type
     public static String Mess(ArrayList<SessionType> s) {
         String result = "";
         for (int i = 0; i < s.size(); i++) {

@@ -30,6 +30,7 @@ public class Client implements Observer {
         return this.forumTypes;
     }
 
+   //The person is over 65 years old
     public boolean Up65(String date) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate birthDate = LocalDate.parse(date, formatter);
@@ -47,10 +48,13 @@ public class Client implements Observer {
         return this.notify;
     }
 
+   //Design template Observer
     @Override
     public void update(String s) {
         this.notify.add(s);
     }
+
+    //Create a new comparison
     @Override
     public boolean equals(Object o) {
         if (this == o) return true; // אותו אובייקט בזיכרון
@@ -58,7 +62,6 @@ public class Client implements Observer {
         Client client = (Client) o;
         return person.getID()==(client.getPerson().getID()); // השוואה לפי id
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(person.getID()); // ייחודיות לפי id
