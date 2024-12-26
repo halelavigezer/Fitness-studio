@@ -50,7 +50,6 @@ A message was sent to all gym clients: Happy New Year to all our valued clients!
 Salaries have been paid to all employees
 A new secretary has started working at the gym: Maayan
 
-
 Nofar Notifications: [The instructor will be a few minutes late for the session, Heavy traffic reported around the gym today. Plan ahead to avoid missing your session!, Happy New Year to all our valued clients!]
 
 ---Gym information---
